@@ -23,6 +23,9 @@ const contentValidation =
 
 const blogIdValidation = 
     body('blogId')
+    .optional()
+    .isString().withMessage('ID must be a string')
+    .trim()
     .isMongoId().withMessage('Invalid format of ID')
     
 
