@@ -14,10 +14,8 @@ export const postsService = {
     },
 
     async create(body: PostInputModel): Promise<string> {
-        const requiredBlog = await blogsRepository.findBlog(body.blogId)
-
         const newPost: RawPost = {
-            blogName: requiredBlog.name,
+            blogName: 'blogName',
             createdAt: new Date().toISOString(),
             ...body
         }
