@@ -16,7 +16,7 @@ export const readPostsFromBlog = async (req: Request, res: Response) => {
 
         const inputQuery = paginationSetDefaults(sanitizedQuery)
 
-        const {items, totalCount} = await blogsService.findBlogPosts(String(req.params.id), inputQuery)
+        const {items, totalCount} = await blogsService.findBlogPosts(String(req.params.blogId), inputQuery)
 
         const result = {
             pagesCount: Math.ceil(totalCount / inputQuery.pageSize),

@@ -9,7 +9,7 @@ import { errorsHandler } from "../../../core/errors/errors-handler"
 
 export const createPostForBlog = async (req: Request, res: Response) => {
     try {
-        const createdPostId: string = await blogsService.createPostForBlog(String(req.params.id), req.body)
+        const createdPostId: string = await blogsService.createPostForBlog(String(req.params.blogId), req.body)
 
         const insertedPostWithId: WithId<RawPost> = await postsService.findById(createdPostId)
 

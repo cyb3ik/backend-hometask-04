@@ -13,16 +13,17 @@ import { postDtoValidationMiddleware } from "../../posts/validation/postDtoValid
 import { createPostForBlog } from "./handlers/createPostForBlog"
 import { paginationAndSortingValidation } from "../../core/middlewares/validation/queryPaginationValidationMiddleware"
 import { BlogSortAttributes } from "../models/blogTypes"
+import { blogIdValidation } from "../../core/middlewares/validation/blogIdValidationMiddleware"
 
 export const blogsRouter = Router() 
 
 blogsRouter
     .get("/", paginationAndSortingValidation(BlogSortAttributes), inputValidationResultMiddleware, readAllBlogs)
     .get("/:id", idValidation, inputValidationResultMiddleware, readBlogById)
-    .get("/:id/posts", idValidation, paginationAndSortingValidation(BlogSortAttributes), inputValidationResultMiddleware, readPostsFromBlog)
+    .get("/:blogId/posts", blogIdValidation, paginationAndSortingValidation(BlogSortAttributes), inputValidationResultMiddleware, readPostsFromBlog)
 
     .post("/", authGuardMiddleware, blogDtoValidationMiddleware, inputValidationResultMiddleware, createBlog)
-    .post("/:id/posts", authGuardMiddleware, postDtoValidationMiddleware, inputValidationResultMiddleware, createPostForBlog)
+    .post("/:blogId/posts", authGuardMiddleware, blogIdValidation, postDtoValidationMiddleware, inputValidationResultMiddleware, createPostForBlog)
 
     .put("/:id", authGuardMiddleware, idValidation, blogDtoValidationMiddleware, inputValidationResultMiddleware, updateBlogById)
 

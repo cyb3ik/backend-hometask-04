@@ -14,8 +14,8 @@ export const blogsService = {
         return blogsRepository.findBlog(id)
     },
 
-    async findBlogPosts(id: string, query: PaginationPostQuery): Promise<{totalCount: number, items: WithId<RawPost>[]}> {
-        const foundBlog = await blogsRepository.findBlog(id)
+    async findBlogPosts(blogId: string, query: PaginationPostQuery): Promise<{totalCount: number, items: WithId<RawPost>[]}> {
+        const foundBlog = await blogsRepository.findBlog(blogId)
         return blogsRepository.findBlogPosts(String(foundBlog._id), query)
     },
 
