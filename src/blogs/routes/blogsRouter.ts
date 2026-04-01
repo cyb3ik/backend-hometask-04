@@ -14,13 +14,14 @@ import { createPostForBlog } from "./handlers/createPostForBlog"
 import { paginationAndSortingValidation } from "../../core/middlewares/validation/queryPaginationValidationMiddleware"
 import { BlogSortAttributes } from "../models/blogTypes"
 import { blogIdValidation } from "../../core/middlewares/validation/blogIdValidationMiddleware"
+import { PostSortAttributes } from "../../posts/models/postTypes"
 
 export const blogsRouter = Router() 
 
 blogsRouter
     .get("/", paginationAndSortingValidation(BlogSortAttributes), inputValidationResultMiddleware, readAllBlogs)
     .get("/:id", idValidation, inputValidationResultMiddleware, readBlogById)
-    .get("/:blogId/posts", blogIdValidation, paginationAndSortingValidation(BlogSortAttributes), inputValidationResultMiddleware, readPostsFromBlog)
+    .get("/:blogId/posts", blogIdValidation, paginationAndSortingValidation(PostSortAttributes), inputValidationResultMiddleware, readPostsFromBlog)
 
     .post("/", authGuardMiddleware, blogDtoValidationMiddleware, inputValidationResultMiddleware, createBlog)
     .post("/:blogId/posts", authGuardMiddleware, blogIdValidation, postDtoValidationMiddleware, inputValidationResultMiddleware, createPostForBlog)
