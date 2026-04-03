@@ -20,7 +20,7 @@ const emailValidation =
     .isString().withMessage('Email must be a string')
     .trim()
     .notEmpty().withMessage('Email should not be empty string')
-    .isEmail().withMessage('Email must be a valid email address')
+    .matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/).withMessage('Email must be a valid email address')
 
 export const userDtoValidationMiddleware = [
     loginValidation,
