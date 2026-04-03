@@ -1,11 +1,13 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-export const TESTING_PATH = '/ht_03/api/testing'
-export const BLOGS_PATH = '/ht_03/api/blogs'
-export const POSTS_PATH = '/ht_03/api/posts'
+export const TESTING_PATH = '/bloggers-platform/api/testing'
+export const BLOGS_PATH = '/bloggers-platform/api/blogs'
+export const POSTS_PATH = '/bloggers-platform/api/posts'
+export const USERS_PATH = '/bloggers-platform/api/users'
+export const AUTH_PATH = '/bloggers-platform/api/auth'
 
-export const mongoUrl = process.env.MONGO_URL
+export const mongoUrl = process.env.MONGO_URL || 'mongodb+srv://admin:1234pass@cluster0.sbxkzzw.mongodb.net/?appName=Cluster0'
 
 export const PORT = process.env.PORT || 5002
 

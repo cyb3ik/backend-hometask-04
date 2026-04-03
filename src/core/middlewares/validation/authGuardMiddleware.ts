@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
-import { HTTPStatusCode } from '../core/utils/status-codes'
-import { adminUserName, adminPass } from '../core/settings/config'
+import { HTTPStatusCode } from '../../utils/status-codes'
+import { adminUserName, adminPass } from '../../settings/config'
  
 export const authGuardMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const auth = req.headers['authorization'] as string

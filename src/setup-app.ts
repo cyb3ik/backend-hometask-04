@@ -3,7 +3,9 @@ import { blogsRouter } from "./blogs/routes/blogsRouter"
 import { postsRouter } from "./posts/routes/postsRouter"
 import { testingRouter } from "./testing/testingRouter"
 import { HTTPStatusCode } from "./core/utils/status-codes"
-import { TESTING_PATH, POSTS_PATH, BLOGS_PATH } from "./core/settings/config"
+import { TESTING_PATH, POSTS_PATH, BLOGS_PATH, USERS_PATH, AUTH_PATH } from "./core/settings/config"
+import { usersRouter } from "./users/routes/usersRouter"
+import { authRouter } from "./auth/routes/authRouter"
  
 export const setupApp = (app: Express) => {
     app.use(express.json())
@@ -15,6 +17,8 @@ export const setupApp = (app: Express) => {
     app.use(POSTS_PATH, postsRouter)
     app.use(BLOGS_PATH, blogsRouter)
     app.use(TESTING_PATH, testingRouter)
+    app.use(USERS_PATH, usersRouter)
+    app.use(AUTH_PATH, authRouter)
     
     return app
 }

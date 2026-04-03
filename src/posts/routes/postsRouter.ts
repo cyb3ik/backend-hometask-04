@@ -7,7 +7,7 @@ import { deletePostById } from "./handlers/deletePostByIdHandler"
 import { idValidation } from "../../core/middlewares/validation/idValidationMiddleware"
 import { postDtoValidationMiddleware } from "../validation/postDtoValidationMiddleware"
 import { inputValidationResultMiddleware } from "../../core/middlewares/validation/inputValidationResultMiddleware"
-import { authGuardMiddleware } from "../../auth/authGuardMiddleware"
+import { authGuardMiddleware } from "../../core/middlewares/validation/authGuardMiddleware"
 import { paginationAndSortingValidation } from "../../core/middlewares/validation/queryPaginationValidationMiddleware"
 import { PostSortAttributes } from "../models/postTypes"
 

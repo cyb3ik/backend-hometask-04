@@ -1,14 +1,17 @@
-import { Collection, Db, MongoClient, WithId } from 'mongodb'
+import { Collection, Db, MongoClient } from 'mongodb'
 import { RawBlog } from '../blogs/models/blogTypes'
 import { RawPost } from '../posts/models/postTypes'
+import { RawUser } from '../users/models/userTypes'
 
 export let client: MongoClient
 export let postsCollection: Collection<RawPost>
 export let blogsCollection: Collection<RawBlog>
+export let usersCollection: Collection<RawUser>
 
 const DB_NAME = 'bloggers-platform'
 const POSTS_COLLECTION_NAME = 'posts'
 const BLOGS_COLLECTION_NAME = 'blogs'
+const USERS_COLLECTION_NAME = 'users'
  
 export async function runDB(url: string): Promise<void> {
 
@@ -17,6 +20,7 @@ export async function runDB(url: string): Promise<void> {
     
     postsCollection = db.collection<RawPost>(POSTS_COLLECTION_NAME)
     blogsCollection = db.collection<RawBlog>(BLOGS_COLLECTION_NAME)
+    usersCollection = db.collection<RawUser>(USERS_COLLECTION_NAME)
     
     try {
         await client.connect()
