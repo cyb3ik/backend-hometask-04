@@ -7,7 +7,7 @@ import { commentsQueryService } from "../../domain/comments.query.service"
 export const deleteCommentById = async (req: Request, res: Response) => {
     try {
 
-        const comment = await commentsQueryService.findComment(req.user._id.toString())
+        const comment = await commentsQueryService.findComment(req.params.id.toString())
 
         if (comment.commentatorInfo.userId === req.user._id.toString()) {
             await commentsService.delete(String(req.params.id))
