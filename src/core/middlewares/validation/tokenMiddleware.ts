@@ -6,8 +6,7 @@ import { usersQueryService } from '../../../users/domain/users.query.service'
 export const tokenMiddleware = async (req: Request, res: Response, next: NextFunction) => {
 
     if (!req.headers.authorization) {
-        res.sendStatus(HTTPStatusCode.UNAUTHORIZED)
-        return
+        return res.sendStatus(HTTPStatusCode.UNAUTHORIZED)
     }
 
     const token = req.headers.authorization.split(" ")[1]
@@ -20,6 +19,5 @@ export const tokenMiddleware = async (req: Request, res: Response, next: NextFun
         return
     }
 
-    res.sendStatus(HTTPStatusCode.UNAUTHORIZED)
-    return
+    return res.sendStatus(HTTPStatusCode.UNAUTHORIZED)
 }

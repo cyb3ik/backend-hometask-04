@@ -12,11 +12,11 @@ export const updateCommentById = async (req: Request, res: Response) => {
 
         if (comment.commentatorInfo.userId === req.user._id.toString()) {
             await commentsService.update(String(req.params.id), req.body)
-            
-            res.sendStatus(HTTPStatusCode.NO_CONTENT)
+
+            return res.sendStatus(HTTPStatusCode.NO_CONTENT)
         }
         else {
-            res.sendStatus(HTTPStatusCode.ACCESS_FORBIDDEN)
+            return res.sendStatus(HTTPStatusCode.ACCESS_FORBIDDEN)
         }
     }
     catch(e) {
